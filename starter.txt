@@ -1,0 +1,7 @@
+# Filename: starter.txt
+#
+# Team Members: Marcell Gentles and Brock Bownds
+#
+# Final Project: Powering Picobot via Genetic Algorithms
+
+We are planning to do the Picobot population program, in which our goal is to develop a Python program to randomly generate Picobot rule sets and determine which of them perform the best (i.e. cover the largest portion of the given picobot 'world'), and then choose pairs of the best ones and use a genetic algorithm to create new Picobot rule sets with characteristics of both. Our final project will follow closely the guidelines of the Picobot final instructions. Beyond the Picobot guidelines, we will be making our own Picobot world/environment that contains blocks and walls in the 25x25 area.
