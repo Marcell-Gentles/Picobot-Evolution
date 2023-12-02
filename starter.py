@@ -1,6 +1,6 @@
 ### starter.py
 #
-### Marcell Gentles and Brock Bownds
+### Marcell Gentles, Brock Bownds, and Elizabeth Hernandez
 #
 ### Nov 28, 2023
 

@@ -1,6 +1,6 @@
 # Filename: starter.txt
 #
-# Team Members: Marcell Gentles and Brock Bownds
+# Team Members: Marcell Gentles, Brock Bownds, and Elizabeth Hernandez
 #
 # Final Project: Powering Picobot via Genetic Algorithms
 

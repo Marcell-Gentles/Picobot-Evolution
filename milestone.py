@@ -1,6 +1,6 @@
 ### Filename: milestone.py
 #
-### Names: Marcell Gentles and Brock Bownds
+### Names: Marcell Gentles, Brock Bownds, and Elizabeth Hernandez
 #
 ### Date:
 #
