@@ -47,6 +47,18 @@ class Program:
                     move = random.choice(['N', 'S', 'E', 'W'])
                 new_state = random.choice(range(NUMSTATES))
                 self.rules[(state, surr)] = (move, new_state)
+    
+    def mutate(self):
+        """Chooses a single rule from self.rules and should change the value
+           (the move and new state) for it
+        """
+        pass
+
+    def crossover(self, other):
+        """Returns a new "offspring" Program that contains some of the rules
+           from self and the rest from the Program other. 
+        """
+        pass
 
 
 class World:
@@ -106,11 +118,14 @@ class World:
         self.row += tra[1]
         self.room[self.row][self.col] = 'P' # update room for position
         
-    def run(self, steps, display=True, wait=0.2):
-        """Simulates an integer steps number of steps in the Picobot world
+    def run(self, steps, display=False, wait=0.2):
+        """Simulates an integer steps number of steps in the Picobot world,
+           with the option to display them in the terminal with wait number of
+           seconds between each step
         """
         for x in range(steps):
             if display:
+                # display the world, state, surroundings, and step
                 print(self)
                 print('State:', self.state,
                       'Surroundings:', self.getCurrentSurroundings(),
@@ -122,4 +137,36 @@ class World:
                 time.sleep(wait)
             self.step()
 
-    
+    def fractionVisitedCells(self):
+        """Returns the float fraction of cells in self.room that have been
+           marked as visited (including Picobot's current location)
+        """
+        pass
+
+
+def genPop(size):
+    """Returns a population (list) of size number of random Picobot Programs
+    """
+    pass
+
+def evaluateFitness(program, trials, steps):
+    """Uses the World method fractionVisitedCells to return the average
+       'fitness' (number of cells visited by Picobot) of a Program over trials
+       number of simulations of steps steps starting at a random cell
+    """
+    pass
+
+def GA(popsize, numgens):
+    """Creates popsize random Picobot Programs and uses their crossover method
+       numgens times along with occasional mutation to 'breed' the most fit
+       population and return the single most fit Program after the evolution
+    """
+    pass
+
+def saveToFile(filename, p):
+        """Saves the data from Program p
+           to a file named filename
+        """
+        f = open(filename, "w")
+        print(p, file = f)        # prints Picobot program from __repr__
+        f.close()
