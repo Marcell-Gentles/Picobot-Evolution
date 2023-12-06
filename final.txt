@@ -4,3 +4,13 @@
 #
 # Final Project: Powering Picobot via Genetic Algorithms
 
+How we tested your code and chose the parameters of your genetic algorithm, e.g.,
+What fraction of each population you decided to be fit enough to "mate".
+x
+How you arranged the mating and mutations.
+x
+
+How well your overall fittest evolved Picobot program performed and how it did so.
+x
+Please include your most-fit Picobot program, too, in a comment—along with its fitness—that way, we can run it!
+x
