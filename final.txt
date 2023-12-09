@@ -4,13 +4,123 @@
 #
 # Final Project: Powering Picobot via Genetic Algorithms
 
-How we tested your code and chose the parameters of your genetic algorithm, e.g.,
-What fraction of each population you decided to be fit enough to "mate".
-x
-How you arranged the mating and mutations.
-x
+During the process of writing the code for this project, we tested it by running simulations with visual feedback in the terminal. With a parameter for the run method of the World class, we could choose to display the simulation through a terminal interface similar to the Picobot website's. This allowed us to understand the flow of data in a visual, intuitive way, and gave us information such as the state, percieved surroundings, and position at a glance. When we had bound errors, it was easy to see that they were due to collisions with poorly-programmed walls or disobedient rule-generating algorithms in this way.
 
-How well your overall fittest evolved Picobot program performed and how it did so.
-x
-Please include your most-fit Picobot program, too, in a comment—along with its fitness—that way, we can run it!
-x
+To choose the parameters of our genetic algorithm, we first used a function that selected random pairs of mutation and reproduction rates and simulated evolution with them, returning the best combinations. However, this was very computationally expensive, and suffered from the requirement of a small sample size in order to finish executing. This function gave us our first genetic conditions: an 8.8% rate of mutation and a 2.4% rate of reproduction. This seemed decent at first, giving us up to 28% fitness. However, we realized that the small sample size this function used made it somewhat misleading; there was probably a better combination out there.
+
+Raising the mutation rate from 2.4% to 5% had a very positive effect, reaching 87%, especially with a high population of Picobot programs (tested on 200 programs through 200 generations running 50 trials of 1000 steps, with an 8.8% of the population reproducing each time). Raising the mutation rate to 10% got an average of 83% after just 5 generations, which took 20 generations with the 5% mutation rate.
+During this simulation, the average fitness began to hover around 95% after about 50 generations, but with a higher mutation rate, it was less stable around that 95% equilibrium, sometimes dropping back to 93% or springing momentarily to 97%. There was a sudden jump to an equilibrium around 99% approaching generation 100, likely fueled by the quick nature of high mutation rate. The first 100% fit picobot program evolved at generation 98.
+8% mutation performed similarly, but not quite as well. 15% Mutation started slower. It reached a high of 100% at generation 60, but with averages as far as 5% behind. 12% also performed worser than 10% mutation.
+
+After this exploration with mutation rate, we manipulated the fraction of the population that reproduces (with mutation at a constant 10%). Starting with 4.0% (vs. 8.8%), the highest fitness did not grow as fast, but took the average with it better, shown by this snippet
+Generation : 19 
+    Average fitness : 0.4632873599999999 
+    Highest fitness : 0.5853760000000001
+Generation : 20 
+    Average fitness : 0.46657584000000013 
+    Highest fitness : 0.561856
+Generation : 21 
+    Average fitness : 0.4664543999999999 
+    Highest fitness : 0.8033919999999999
+Generation : 22 
+    Average fitness : 0.49758527999999996 
+    Highest fitness : 0.8219839999999999
+Generation : 23 
+    Average fitness : 0.8125988799999996 
+    Highest fitness : 0.8220480000000001
+Generation : 24 
+    Average fitness : 0.8065974400000002 
+    Highest fitness : 0.8221759999999999
+
+15% reproduction took very long to raise the average, and then got stuck at a high of 34% fitness around generation 50. 10% also hung up around 35% fitness.
+
+It seemed as if we had found some special conditions in for amazing fitness as soon as we began to raise the mutation rate. We retested those conditions to make sure the first result was not a fluke.
+
+With 10% mutation, 8.8% of the population reproducing, a population size of 200, 100 generations, 50 trials per program to determine fitness, and 1000 steps in each trial, it was our best run yet! Here is the beginning of it:
+
+Generation : 0 
+    Average fitness : 0.0510608 
+    Highest fitness : 0.15052799999999997
+Generation : 1 
+    Average fitness : 0.07473423999999998 
+    Highest fitness : 0.46287999999999996
+Generation : 2 
+    Average fitness : 0.09277423999999998 
+    Highest fitness : 0.4963520000000001
+Generation : 3 
+    Average fitness : 0.20433679999999999 
+    Highest fitness : 0.9275840000000004
+Generation : 4 
+    Average fitness : 0.5262217600000003 
+    Highest fitness : 0.9278400000000003
+Generation : 5 
+    Average fitness : 0.8393459200000002 
+    Highest fitness : 0.928224
+Generation : 6 
+    Average fitness : 0.904196640000001 
+    Highest fitness : 0.9573440000000004
+Generation : 7 
+    Average fitness : 0.9092182400000013 
+    Highest fitness : 0.9610560000000004
+
+Within 7 generations, our algorithm was consistantly producing 90% fitness averages. With a lucky mutation in generation 36, it made the jump from a high of 96.8% fitness to our first 100% fit program of this simulation!
+
+Generation : 34 
+    Average fitness : 0.9363191999999988 
+    Highest fitness : 0.9674239999999992
+Generation : 35 
+    Average fitness : 0.9595607999999984 
+    Highest fitness : 0.9681599999999994
+Generation : 36 
+    Average fitness : 0.9498073599999991 
+    Highest fitness : 1.0
+Generation : 37 
+    Average fitness : 0.9633921599999995 
+    Highest fitness : 1.0
+
+Here is that program:
+0 xxxx -> W 0
+0 Nxxx -> S 2
+0 NExx -> S 0
+0 NxWx -> E 1
+0 xxxS -> E 1
+0 xExS -> W 2
+0 xxWS -> E 2
+0 xExx -> S 2
+0 xxWx -> S 2
+1 xxxx -> S 0
+1 Nxxx -> E 3
+1 NExx -> W 0
+1 NxWx -> E 2
+1 xxxS -> W 4
+1 xExS -> W 4
+1 xxWS -> E 4
+1 xExx -> S 3
+1 xxWx -> E 4
+2 xxxx -> N 3
+2 Nxxx -> W 0
+2 NExx -> W 4
+2 NxWx -> E 2
+2 xxxS -> N 2
+2 xExS -> N 2
+2 xxWS -> N 1
+2 xExx -> W 0
+2 xxWx -> E 4
+3 xxxx -> E 3
+3 Nxxx -> W 3
+3 NExx -> W 2
+3 NxWx -> S 3
+3 xxxS -> W 0
+3 xExS -> N 3
+3 xxWS -> N 4
+3 xExx -> N 3
+3 xxWx -> E 4
+4 xxxx -> E 4
+4 Nxxx -> E 1
+4 NExx -> W 1
+4 NxWx -> E 3
+4 xxxS -> W 0
+4 xExS -> N 2
+4 xxWS -> E 1
+4 xExx -> W 1
+4 xxWx -> S 2
