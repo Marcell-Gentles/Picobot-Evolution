@@ -1,4 +1,4 @@
-# CS5-Picobot-Evolution
+# Picobot-Evolution
 
 #### Thanks to my collaborators Brock Bownds and Elizabeth Hernandez
 
