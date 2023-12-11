@@ -1,6 +1,6 @@
 # Picobot-Evolution
 
-#### Thanks to my collaborators Brock Bownds and Elizabeth Hernandez
+#### Thanks to my collaborators Brock Bownds and [Elizabeth Hernandez](https://github.com/elhernandez15)
 
 ---
 
